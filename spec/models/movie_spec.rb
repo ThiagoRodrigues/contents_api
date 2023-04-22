@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Content, type: :model do
+RSpec.describe Movie, type: :model do
   describe 'attributes' do
     it { is_expected.to respond_to(:order) }
     it { is_expected.to respond_to(:title) }
