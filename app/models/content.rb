@@ -5,5 +5,5 @@ class Content < ApplicationRecord
 
   scope :ordered, ->(direction: :asc) { order(order: direction.to_sym) }
   scope :movies, -> { where(type: 'Movie') }
-  scope :tv_shows, -> { where(type: 'TvShow') }
+  scope :tv_shows, -> { where(type: 'TvShow').includes(seasons: :episodes) }
 end

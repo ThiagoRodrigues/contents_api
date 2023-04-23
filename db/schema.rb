@@ -15,11 +15,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_22_205424) do
   enable_extension "plpgsql"
 
   create_table "contents", force: :cascade do |t|
-    t.string "order"
+    t.integer "order"
+    t.integer "year"
     t.string "type", default: "Movie"
     t.string "title"
     t.string "original_title"
-    t.string "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order"], name: "index_contents_on_order"

@@ -9,6 +9,7 @@ require 'rspec/rails'
 require 'support/factory_bot'
 require 'support/shoulda'
 require 'support/database_cleaner'
+require 'support/request_helpers'
 
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
