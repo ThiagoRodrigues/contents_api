@@ -2,5 +2,10 @@ class SeasonSerializer < ActiveModel::Serializer
   attributes :id, :number, :episodes
 
   belongs_to :tv_show
-  has_many :episodes, each_serializer: EpisodeSerializer
+
+  def episodes
+    object.episodes.map do |episode|
+      EpisodeSerializer.new(episode, root: true)
+    end
+  end
 end

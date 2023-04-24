@@ -52,5 +52,8 @@ group :test do
   gem 'factory_bot_rails', require: false
   gem 'ffaker'
   gem 'rspec-rails'
+  gem 'simplecov', require: false
   gem 'shoulda-matchers', require: false
 end
+
+gem 'will_paginate', '~> 3.3'

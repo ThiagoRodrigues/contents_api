@@ -4,7 +4,14 @@ module Api
   module V1
     class ContentsController < ApplicationController
       def index
-        render json: contents, status: :ok
+        render json: contents.paginate(page: params[:page], per_page: params[:per_page]),
+               each_serializer: ContentSerializer,
+               status: :ok,
+               meta: {
+                 page:     params[:page],
+                 per_page: params[:per_page],
+                 total:    contents.count
+                }
       end
 
       def root
@@ -18,13 +25,13 @@ module Api
       end
 
       def content_params
-        params.require(:content).permit(:content_type)
+        params.require(:content).permit(:content_type, :per_page, :page)
       end
 
       def contents
-        return Content.all.ordered if content_type.nil?
-
-        Content.send(content_type.pluralize).ordered
+        Rails.cache.fetch(Content.cache_key) do
+          Contents.call(content_type).load
+        end
       end
     end
   end

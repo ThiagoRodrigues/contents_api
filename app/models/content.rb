@@ -4,6 +4,11 @@ class Content < ApplicationRecord
   validates :title, :original_title, :year, presence: true
 
   scope :ordered, ->(direction: :asc) { order(order: direction.to_sym) }
-  scope :movies, -> { where(type: 'Movie') }
-  scope :tv_shows, -> { where(type: 'TvShow').includes(seasons: :episodes) }
+
+  def self.cache_key
+    {
+      serializer: 'contents',
+      stat_record: Content.maximum(:updated_at)
+    }
+  end
 end
