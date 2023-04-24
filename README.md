@@ -30,7 +30,7 @@ To run the test suite, follow these steps:
 
 1. Navigate to the application's root directory.
 2. Run `bundle exec rspec` to run the test suite.
-
+3. Open the `coverage/index.html` file to view the test coverage.
 
 ## Endpoints
 
