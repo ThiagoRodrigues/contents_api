@@ -1,4 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+require 'simplecov'
+SimpleCov.start
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
@@ -9,6 +11,7 @@ require 'rspec/rails'
 require 'support/factory_bot'
 require 'support/shoulda'
 require 'support/database_cleaner'
+require 'support/request_helpers'
 
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
